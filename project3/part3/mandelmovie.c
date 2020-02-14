@@ -5,6 +5,8 @@
 #include <errno.h>
 #include <string.h>
 #include <time.h>
+#include <sys/wait.h>
+#include <unistd.h>
 
 
 // ./mandel -x -0.5024 -y -0.603 -s 0.0001 -m 1000 -H 1024 -W 1300
@@ -84,6 +86,8 @@ int main(int argc, char* argv[]){
             //adjust scale
             scaleStart = scaleStart*zoom;
 
+            free(command[6]);
+            free(command[8]);
 
         }
         //ending processes
@@ -100,6 +104,7 @@ int main(int argc, char* argv[]){
                 numFork--;
             }
         }
+        
 
     }
 

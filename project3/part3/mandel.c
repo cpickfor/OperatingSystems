@@ -65,7 +65,7 @@ int main( int argc, char *argv[] )
 	// For each command line argument given,
 	// override the appropriate configuration value.
 
-	while((c = getopt(argc,argv,"x:y:s:W:H:m:o:h"))!=-1) {
+	while((c = getopt(argc,argv,"x:y:s:W:H:m:o:n:h"))!=-1) {
 		switch(c) {
 			case 'x':
 				xcenter = atof(optarg);
@@ -87,6 +87,9 @@ int main( int argc, char *argv[] )
 				break;
 			case 'o':
 				outfile = optarg;
+				break;
+			case 'n':
+				threadCount = atoi(optarg);
 				break;
 			case 'h':
 				show_help();
