@@ -16,18 +16,11 @@ float scaleStart = 2.0000;
 float scaleEnd = 0.0001;
 int numFork = 0;
 
-
-int main(int argc, char* argv[]){
+void multiProc(int num){
     pid_t pid;
     int status;
-    
-    //check number of arguments is correct
-    if(argc != 2) {
-		printf("command shoulf follow: ./mandelmovie <#forks>\n");
-		exit(1);
-	}
 
-    int forkNum = atoi(argv[1]); //get number of processes from command line
+    int forkNum = num; //get number of processes from command line
     float zoom = exp(log(scaleEnd/scaleStart)/51); //controll zoom
     printf("%f\n", zoom);
 
@@ -107,6 +100,18 @@ int main(int argc, char* argv[]){
         
 
     }
+
+}
+
+
+int main(int argc, char* argv[]){
+    
+    //check number of arguments is correct
+    if(argc != 2) {
+		printf("command shoulf follow: ./mandelmovie <#forks>\n");
+		exit(1);
+	}
+    multiProc(atoi(argv[1]));
 
     return 0;
 }
